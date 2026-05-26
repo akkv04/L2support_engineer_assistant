@@ -55,3 +55,6 @@ join(body('ParseJson')?['resolutionsteps'],',')
   "pending_action": "Aiving system.",
   "customer_reference": ""
 }
+----------------------------------------
+
+The execution of template action 'Compose_1' is skipped: the 'runAfter' condition for action 'Execute_Agent_and_wait' is not satisfied. Expected status values 'Succeeded' and actual value 'Skipped'.
