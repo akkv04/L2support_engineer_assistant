@@ -22,3 +22,6 @@ Flow save failed with code 'InvalidVariableOperation' and message 'The inputs of
 
 <img width="1601" height="323" alt="image" src="https://github.com/user-attachments/assets/f1bd88b6-20d0-405d-8433-2246f8cf7952" />
 <img width="1743" height="116" alt="image" src="https://github.com/user-attachments/assets/23c7d907-ef3b-449f-8005-588f691bc989" />
+Flow run failed. Action 'ParseJson' failed: The 'content' property of actions of type 'ParseJson' must be valid JSON. The provided value cannot be parsed: 'Unexpected character encountered while parsing value: `. Path '', line 0, position 0.'.
+
+
