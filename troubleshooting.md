@@ -15,3 +15,7 @@
   "rca_summary": "Brief RCA here",
   "corrective_actions": ["Preventive action 1"]
 }
+
+
+
+<img width="1601" height="323" alt="image" src="https://github.com/user-attachments/assets/f1bd88b6-20d0-405d-8433-2246f8cf7952" />
