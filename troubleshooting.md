@@ -35,3 +35,23 @@ replace(replace(body('Execute_agent_and_wait')?['responses'][0], '```json', ''),
 Unable to process template language expressions in action 'Set_variable_9' inputs at line '0' and column '0': 'The template language function 'join' expects its first parameter to be an array. The provided value is of type 'Null'. Please see https://aka.ms/logicexpressions#join for usage details.'.
 
 join(body('ParseJson')?['resolutionsteps'],',')
+
+------------------------------
+{
+  "ticket_id": "",
+  "issue_summary": "Manual recall request for NPP transaction  related to message.",
+  "customer_name": " Bank",
+  "dispute_id": "",
+  "npp_case_id": "",
+  "original_transaction_id": "",
+  "amount": ".00 AUD",
+  "original_settlement_date": "2026-02-25T19:04:16",
+  "related_case_ids": [
+    ""
+  ],
+  "actions_taken": [
+    ""
+  ],
+  "pending_action": "Aiving system.",
+  "customer_reference": ""
+}
