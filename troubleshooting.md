@@ -30,6 +30,7 @@ fix: replace(replace(body('Execute_agent_and_wait')?['last_response'], '```json'
 4. Flow run failed. Action 'Compose_1' failed: Unable to process template language expressions in action 'Compose_1' inputs at line '0' and column '0': 'The template language function 'replace' expects its first parameter 'string' to be a string. The provided value is of type 'Null'. Please see https://aka.ms/logicexpressions#replace for usage details.'.
 
 replace(replace(body('Execute_agent_and_wait')?['responses'][0], '```json', ''), '```', '')
+Unable to process template language expressions in action 'Set_variable_9' inputs at line '0' and column '0': 'The template language function 'join' expects its first parameter to be an array. The provided value is of type 'Null'. Please see https://aka.ms/logicexpressions#join for usage details.'.
 
 1
 
