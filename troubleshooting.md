@@ -1,6 +1,6 @@
 {
   "classification": "Incident",
-  "subject_summary": "Exchange outage affecting users",
+  "subject_summary": "Exchange outage",
   "affected_system": "Exchange Online",
   "affected_users": "50 users",
   "incident_number": "INC0023451",
@@ -15,6 +15,8 @@
   "rca_summary": "Brief RCA here",
   "corrective_actions": ["Preventive action 1"]
 }
+
+
 Flow save failed with code 'InvalidVariableOperation' and message 'The inputs of workflow run action 'Create_file' of type 'OpenApiConnection' are not valid. The variable 'varIncidnentNumber' must be initialized before it can be used inside action 'Create_file'.'.
 
 
