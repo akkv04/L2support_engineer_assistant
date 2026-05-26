@@ -32,5 +32,4 @@ fix: replace(replace(body('Execute_agent_and_wait')?['last_response'], '```json'
 replace(replace(body('Execute_agent_and_wait')?['responses'][0], '```json', ''), '```', '')
 Unable to process template language expressions in action 'Set_variable_9' inputs at line '0' and column '0': 'The template language function 'join' expects its first parameter to be an array. The provided value is of type 'Null'. Please see https://aka.ms/logicexpressions#join for usage details.'.
 
-1
-
+join(body('ParseJson')?['resolutionsteps'],',')
