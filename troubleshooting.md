@@ -58,3 +58,14 @@ join(body('ParseJson')?['resolutionsteps'],',')
 ----------------------------------------
 
 The execution of template action 'Compose_1' is skipped: the 'runAfter' condition for action 'Execute_Agent_and_wait' is not satisfied. Expected status values 'Succeeded' and actual value 'Skipped'.
+
+
+------------
+@not(contains(triggerOutputs()?['body/from'], 'microsoft.com'))
+----
+@not(contains(triggerOutputs()?['body/from'], triggerOutputs()?['body/toRecipients']))
+----
+
+@not(contains(toLower(triggerOutputs()?['body/subject']), 'power automate'))
+-----
+@not(contains(toLower(triggerOutputs()?['body/subject']), 'approval'))
