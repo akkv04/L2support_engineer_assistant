@@ -77,3 +77,40 @@ concat('https://YOURCOMPANY.atlassian.net/wiki/rest/api/content/search?cql=type=
 
 -----
 concat('type=page AND space.key="ITSUP" AND text~"', triggerOutputs()?['body/subject'], '"')
+
+-----
+
+body('HTTP_SearchConfluence')?['results']
+Click OK.
+Map field — click "Expression" tab, paste:
+concat(item()?['title'], ' -- ', item()?['body']?['storage']?['value'])
+Click OK.
+Rename this step: Select_ConfluencePages
+
+Part 5 — Add the Compose Step (Join Everything Together)
+This flattens the selected pages into one single text block to inject into your agent.
+
+Click "+" below Select step → "Add an action"
+Search: Compose
+Choose "Compose" under Data Operation
+
+Inputs field — click "Expression" tab, paste:
+join(body('Select_ConfluencePages'), ' --- NEXT ARTICLE --- ')
+Click OK.
+Rename this step: Compose_ConfluenceContent
+
+Part 6 — Update Your Execute Agent Message
+Now open your Execute agent and wait step. Find the Message field and update it to include the Confluence content.
+Your message should now look like this — add the middle section which is new:
+EMAIL SUBJECT: [Subject — trigger]
+EMAIL FROM: [From — trigger]
+EMAIL BODY: [Body Preview — trigger]
+
+SIMILAR PAST EMAILS:
+[Outputs — Compose (your existing join past emails step)]
+
+CONFLUENCE KNOWLEDGE BASE ARTICLES:
+[Outputs — Compose_ConfluenceContent]
+
+Analyse this email. Prioritise the Confluence articles above for resolution steps and RCA. Return JSON only, no other text outside the JSON. First character must be { and last must be }.
+To add [
