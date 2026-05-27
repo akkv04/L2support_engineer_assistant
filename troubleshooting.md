@@ -69,3 +69,7 @@ The execution of template action 'Compose_1' is skipped: the 'runAfter' conditio
 @not(contains(toLower(triggerOutputs()?['body/subject']), 'power automate'))
 -----
 @not(contains(toLower(triggerOutputs()?['body/subject']), 'approval'))
+
+----
+
+concat('https://YOURCOMPANY.atlassian.net/wiki/rest/api/content/search?cql=type=page+AND+space.key=%22YOURSPACEKEY%22+AND+text~%22', encodeUriComponent(triggerOutputs()?['body/subject']), '%22&limit=3&expand=body.storage,version')
