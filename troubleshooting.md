@@ -122,3 +122,8 @@ https://acmecorp.atlassian.net/wiki/rest/api/content/search?cql=type=page+AND+sp
 
 <img width="658" height="733" alt="image" src="https://github.com/user-attachments/assets/e7b9c05b-34f4-47a3-b2a8-ff1715910ddd" />
 
+----------------
+
+
+Flow save failed with code 'WorkflowRunActionInputsInvalidProperty' and message 'The inputs of workflow run action 'Set_variable_8' of type 'SetVariable' are not valid. Self reference is not supported when updating the value of variable 'VarConfidence'.'.
+
