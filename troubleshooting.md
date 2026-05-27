@@ -118,3 +118,7 @@ To add [
 --------
 
 https://acmecorp.atlassian.net/wiki/rest/api/content/search?cql=type=page+AND+space.key=%22ITSUP%22+AND+text~%22Exchange%22&limit=3&expand=body.storage
+
+
+<img width="658" height="733" alt="image" src="https://github.com/user-attachments/assets/e7b9c05b-34f4-47a3-b2a8-ff1715910ddd" />
+
