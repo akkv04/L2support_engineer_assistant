@@ -114,3 +114,7 @@ CONFLUENCE KNOWLEDGE BASE ARTICLES:
 
 Analyse this email. Prioritise the Confluence articles above for resolution steps and RCA. Return JSON only, no other text outside the JSON. First character must be { and last must be }.
 To add [
+
+--------
+
+https://acmecorp.atlassian.net/wiki/rest/api/content/search?cql=type=page+AND+space.key=%22ITSUP%22+AND+text~%22Exchange%22&limit=3&expand=body.storage
