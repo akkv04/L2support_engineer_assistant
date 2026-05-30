@@ -166,3 +166,13 @@ html<html><body>
 <h2>Reviewer Notes</h2>
 <p>[varRejectionComment]</p>
 </body></html>
+
+
+
+
+-============
+
+replace(replace(body('Execute_agent_and_wait_2')?['responses'][0], '```json', ''), '```', '')
+
+
+varResolutionStepsExpression: join(body('Parse_JSON_2')?['resolution_steps'], ', ')
