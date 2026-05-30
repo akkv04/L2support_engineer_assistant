@@ -125,5 +125,14 @@ https://acmecorp.atlassian.net/wiki/rest/api/content/search?cql=type=page+AND+sp
 ----------------
 
 
+if(
+  empty(body('Get_emails_(V3)')?['value']),
+  'No similar past emails found in inbox.',
+  join(
+    body('Get_emails_(V3)')?['value'],
+    ' --- NEXT EMAIL --- '
+  )
+)
+
 Flow save failed with code 'WorkflowRunActionInputsInvalidProperty' and message 'The inputs of workflow run action 'Set_variable_8' of type 'SetVariable' are not valid. Self reference is not supported when updating the value of variable 'VarConfidence'.'.
 
