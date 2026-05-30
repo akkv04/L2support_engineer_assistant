@@ -137,3 +137,5 @@ if(
 Flow save failed with code 'WorkflowRunActionInputsInvalidProperty' and message 'The inputs of workflow run action 'Set_variable_8' of type 'SetVariable' are not valid. Self reference is not supported when updating the value of variable 'VarConfidence'.'.
 
 concat('Step ', item()?['step_number'], ': ', item()?['action'], ' (Source: ', item()?['source_title'], ')')
+
+join(body('Select_ResolutionSteps'), decodeUriComponent('%0A%0A'))
