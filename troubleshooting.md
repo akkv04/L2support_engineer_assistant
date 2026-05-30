@@ -187,4 +187,6 @@ Flow save failed with code 'InvalidTemplate' and message 'The template validatio
 Flow save failed with code 'InvalidTemplate' and message 'The template validation failed: 'The repetition action(s) 'For_each_1' referenced by 'inputs' in action 'Send_an_email_(V2)' are not defined in the template.'.'.
 Flow save failed with code 'InvalidTemplate' and message 'The template validation failed: 'The repetition action(s) 'For_each' referenced by 'inputs' in action 'Set_variable_12' are not defined in the template.'.'.
 
+=====
+Flow save failed with code 'InvalidWorkflowRunAction' and message 'The workflow run action 'Terminate_2' has type 'Terminate' that is not allwed to be nested under an action of type 'until'.'.
 
