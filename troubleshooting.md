@@ -139,3 +139,30 @@ Flow save failed with code 'WorkflowRunActionInputsInvalidProperty' and message 
 concat('Step ', item()?['step_number'], ': ', item()?['action'], ' (Source: ', item()?['source_title'], ')')
 
 join(body('Select_ResolutionSteps'), decodeUriComponent('%0A%0A'))
+
+
+-------------
+Action 2 — Create .docx in SharePoint
+Action:        Create file
+Site Address:  https://yourcompany.sharepoint.com/sites/ITSupport
+Folder Path:   /RCADocuments/
+File Name (Expression tab):
+concat('RCA_', variables('varIncidentNumber'), '_', variables('varAffectedSystem'), '_', formatDateTime(utcNow(),'yyyyMMdd'), '.docx')
+File Content — paste this HTML:
+html<html><body>
+<h1>Root Cause Analysis</h1>
+<h2>Incident Summary</h2>
+<p><b>Incident #:</b> [varIncidentNumber]</p>
+<p><b>Subject:</b> [varSubjectSummary]</p>
+<p><b>Affected System:</b> [varAffectedSystem]</p>
+<p><b>Affected Users:</b> [varAffectedUsers]</p>
+<p><b>Severity:</b> [varSeverity]</p>
+<h2>Root Cause</h2>
+<p>[varProbableCause]</p>
+<h2>Resolution Steps</h2>
+<p>[varResolutionSteps]</p>
+<h2>RCA Summary</h2>
+<p>[varRCASummary]</p>
+<h2>Reviewer Notes</h2>
+<p>[varRejectionComment]</p>
+</body></html>
