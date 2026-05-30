@@ -176,3 +176,11 @@ replace(replace(body('Execute_agent_and_wait_2')?['responses'][0], '```json', ''
 
 
 varResolutionStepsExpression: join(body('Parse_JSON_2')?['resolution_steps'], ', ')
+
+
+===============
+
+Flow save failed with code 'InvalidTemplate' and message 'The template validation failed: 'The inputs of template action 'Send_an_email_(V2)' at line '1 and column '9299' is invalid. Action 'For_each_1' must be a parent 'foreach' scope of action 'Send_an_email_(V2)' to be referenced by 'repeatItems' or 'items' functions.'.'.
+
+
+
