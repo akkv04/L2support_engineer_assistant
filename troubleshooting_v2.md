@@ -2,3 +2,7 @@ Flow run failed. Action 'Get_email_(V2)' failed: The specified object was not fo
 
 
 <img width="883" height="805" alt="image" src="https://github.com/user-attachments/assets/257d0ddf-4b32-4e70-b3e2-d22ebb9bedd8" />
+
+replace(replace(replace(triggerOutputs()?['body/subject'], 'RE: ', ''), 'FW: ', ''), 'FWD: ', '')
+Then in Get emails V3, change the Search Query to use this cleaned subject:
+subject:"[Outputs from Compose_CleanSubject]"
