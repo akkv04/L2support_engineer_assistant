@@ -6,3 +6,56 @@ Flow run failed. Action 'Get_email_(V2)' failed: The specified object was not fo
 replace(replace(replace(triggerOutputs()?['body/subject'], 'RE: ', ''), 'FW: ', ''), 'FWD: ', '')
 Then in Get emails V3, change the Search Query to use this cleaned subject:
 subject:"[Outputs from Compose_CleanSubject]"
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { font-family: Calibri, Arial, sans-serif; margin: 40px; color: #333; }
+  h1 { color: #1a5276; border-bottom: 2px solid #1a5276; padding-bottom: 8px; }
+  h2 { color: #2874a6; margin-top: 30px; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+  td { padding: 8px 12px; border: 1px solid #ddd; }
+  td:first-child { font-weight: bold; width: 200px; background-color: #f2f3f4; }
+  .footer { margin-top: 40px; font-size: 12px; color: #888; }
+</style>
+</head>
+<body>
+
+<h1>Root Cause Analysis Document</h1>
+
+<h2>Incident Summary</h2>
+<table>
+  <tr><td>Incident #</td><td>[varIncidentNumber]</td></tr>
+  <tr><td>Subject</td><td>[varSubjectSummary]</td></tr>
+  <tr><td>Affected System</td><td>[varAffectedSystem]</td></tr>
+  <tr><td>Affected Users</td><td>[varAffectedUsers]</td></tr>
+  <tr><td>Severity</td><td>[varSeverity]</td></tr>
+  <tr><td>Confidence</td><td>[varConfidence]</td></tr>
+</table>
+
+<h2>Root Cause</h2>
+<p>[varProbableCause]</p>
+
+<h2>Resolution Steps</h2>
+<p>[varResolutionSteps]</p>
+
+<h2>RCA Summary</h2>
+<p>[varRCASummary]</p>
+
+<h2>Reviewer Notes</h2>
+<p>[varRejectionComment]</p>
+
+<h2>Timeline</h2>
+<table>
+  <tr><td>Email Received</td><td>[Received Time from trigger]</td></tr>
+  <tr><td>RCA Created</td><td>[utcNow() expression]</td></tr>
+</table>
+
+<div class="footer">
+  Generated automatically by L2 Support — Email to RCA Flow
+</div>
+
+</body>
+</html>
