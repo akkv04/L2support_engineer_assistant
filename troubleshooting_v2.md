@@ -64,3 +64,7 @@ subject:"[Outputs from Compose_CleanSubject]"
 
 
 <img width="931" height="828" alt="image" src="https://github.com/user-attachments/assets/a7d62db3-86ee-4739-88ed-1bcf465fb339" />
+
+Flow save failed with code 'InvalidTemplate' and message 'The template validation failed: 'The repetition action(s) 'For_each_1' referenced by 'inputs' in action 'Create_file1' are not defined in the template.'.'.
+
+
