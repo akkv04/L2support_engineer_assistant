@@ -71,4 +71,9 @@ Flow save failed with code 'InvalidTemplate' and message 'The template validatio
 outputs('Start_and_wait_for_an_approval')?['body/responses'][0]?['comments']
 
 
+The input parameter(s) of action 'Set_varRejectionComment' contain an invalid reference to 'Start and wait for an approval'. Correct to include a valid reference to 'Start and wait for an approval' for the input parameter(s) of action 'Set_varRejectionComment'.
+
+
+
+
 
