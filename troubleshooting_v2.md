@@ -74,6 +74,7 @@ outputs('Start_and_wait_for_an_approval')?['body/responses'][0]?['comments']
 The input parameter(s) of action 'Set_varRejectionComment' contain an invalid reference to 'Start and wait for an approval'. Correct to include a valid reference to 'Start and wait for an approval' for the input parameter(s) of action 'Set_varRejectionComment'.
 
 
+<img width="1621" height="820" alt="image" src="https://github.com/user-attachments/assets/31b15d9f-83a7-4b96-8933-24a9a537692f" />
 
 
 
