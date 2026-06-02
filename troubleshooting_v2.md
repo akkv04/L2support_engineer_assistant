@@ -68,3 +68,7 @@ subject:"[Outputs from Compose_CleanSubject]"
 Flow save failed with code 'InvalidTemplate' and message 'The template validation failed: 'The repetition action(s) 'For_each_1' referenced by 'inputs' in action 'Create_file1' are not defined in the template.'.'.
 
 
+outputs('Start_and_wait_for_an_approval')?['body/responses'][0]?['comments']
+
+
+
