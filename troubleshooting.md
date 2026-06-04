@@ -190,3 +190,4 @@ Flow save failed with code 'InvalidTemplate' and message 'The template validatio
 =====
 Flow save failed with code 'InvalidWorkflowRunAction' and message 'The workflow run action 'Terminate_2' has type 'Terminate' that is not allwed to be nested under an action of type 'until'.'.
 
+replace(replace(body('Execute_Triage_Agent')?['responses'][0], '```json', ''), '```', '')
