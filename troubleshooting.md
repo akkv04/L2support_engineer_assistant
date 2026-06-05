@@ -309,3 +309,13 @@ replace(replace(body('Execute_Triage_Agent')?['responses'][0], concat(uriCompone
 
 
 <img width="1182" height="620" alt="image" src="https://github.com/user-attachments/assets/53fd7464-0567-44db-bcbf-36199f6fadb7" />
+
+
+You are classifying an email. Look at the message the user sent which contains SUBJECT, FROM, and BODY fields.
+
+Classify it and respond with ONLY this JSON, nothing else:
+
+{"is_noise": true, "confidence": "High", "primary_reason": "reason here", "matched_patterns": ["pattern"]}
+
+Set is_noise to true if the email is noise (FYI, follow-up, confirmation, out of office, newsletter, thank you, meeting invite).
+Set is_noise to false if it needs L2 attention (system down, error, monitoring alert, user request, access issue).
