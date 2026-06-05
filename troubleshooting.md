@@ -527,3 +527,129 @@ JSON only. Default to NOISE when uncertain. Don't sub-classify. Don't analyze.
 
 Set is_noise to true if the email is noise (FYI, follow-up, confirmation, out of office, newsletter, thank you, meeting invite).
 Set is_noise to false if it needs L2 attention (system down, error, monitoring alert, user request, access issue).
+
+
+=========
+
+
+
+# STRICT OUTPUT RULE
+Return a single JSON object and nothing else.
+First character MUST be {
+Last character MUST be }
+No markdown. No backticks. No code fences. No sentences. No explanation.
+If you cannot classify, return this exactly:
+{"is_noise":false,"confidence":"Low","primary_reason":"unable to classify","matched_patterns":["fallback"]}
+
+# YOUR ONLY JOB
+Answer one question: does this email need an L2 engineer to look at it?
+YES it needs L2 → is_noise false
+NO it does not → is_noise true
+
+# OUTPUT SCHEMA
+{"is_noise":true,"confidence":"High","primary_reason":"one sentence max 100 chars","matched_patterns":["pattern1","pattern2"]}
+
+# HARD RULES — APPLY FIRST, NO EXCEPTIONS
+
+ALWAYS is_noise FALSE (never override these):
+- Sender contains: splunk, datadog, pagerduty, newrelic, grafana, bmc, helix
+- Subject contains: [ALERT], [CRITICAL], [WARNING], [PAGE], [INCIDENT], [P1], [P2]
+- Subject contains: INC followed by numbers (e.g. INC0045231)
+- Body contains: "is down", "outage", "cannot access", "P1", "P2", "Sev 1", "Sev 2", "production issue", "prod down", "users cannot", "blocking"
+- Sender domain: incoming@cuscal-mail.onbmc.com AND subject contains INC
+
+ALWAYS is_noise TRUE (never override these):
+- Sender contains: noreply, no-reply, donotreply, mailer-daemon, postmaster, bounce
+- Sender contains: @e.microsoft.com, @sharepointonline.com, @yammer.com, @viva.engage
+- Subject starts with: "Accepted:", "Declined:", "Cancelled:", "Auto-reply:", "Out of Office:"
+- Subject contains: "Infrastructure status", "Status has been updated to Completed", "Work Order has been submitted"
+- Body contains: "do not reply", "unsubscribe", "you are receiving this"
+
+# NOISE (is_noise: true)
+Use these when hard rules above don't apply:
+- FYI or informational with no current problem
+- Follow-ups with no new information ("just checking", "any update?")
+- Confirmations of already-completed actions
+- Out-of-office, auto-replies
+- Meeting invites, accepts, declines, cancellations
+- Delivery failures, read receipts
+- Thank-you and appreciation messages
+- Newsletters, digests, weekly reports
+- Teams/SharePoint notifications
+- Surveys, feedback requests
+- Scheduled maintenance announcements (future-dated, no current impact)
+- HR, finance, facilities, training topics
+- Work order status updates
+- PBI/story creation notifications from BMC
+- Spam, phishing
+
+# NOT_NOISE (is_noise: false)
+Use these when hard rules above don't apply:
+- System currently down, broken, slow, or unreachable
+- User locked out or cannot access a system right now
+- User reporting an active error or issue
+- Monitoring tool alert about a threshold or breach
+- Access issue blocking someone from doing their job
+- User needs L2 technical help to resolve something
+- Incident assigned to L2 team (INC numbers)
+
+# CLASSIFICATION ALGORITHM
+Apply in strict order, stop at first match:
+
+1. Sender matches ALWAYS FALSE hard rule → is_noise false, High
+2. Subject matches ALWAYS FALSE hard rule → is_noise false, High
+3. Body matches ALWAYS FALSE hard rule → is_noise false, High
+4. Sender matches ALWAYS TRUE hard rule → is_noise true, High
+5. Subject matches ALWAYS TRUE hard rule → is_noise true, High
+6. Body matches ALWAYS TRUE hard rule → is_noise true, High
+7. Email is a monitoring alert (any tool) → is_noise false, High
+8. Email describes current system problem + timestamp or user count → is_noise false, High
+9. Sender from BMC Helix (incoming@cuscal-mail.onbmc.com) → check subject:
+   - Contains INC → is_noise false, High
+   - Contains WO or Work Order → is_noise true, High
+   - Contains PBI → is_noise true, High
+   - Default → is_noise false, Medium
+10. Subject contains "Request ID" → is_noise false, Medium
+11. Email is informational, follow-up, notification, or admin → is_noise true, High
+12. None match clearly → is_noise false, Low (safe fallback — do not drop potential incidents)
+
+# CALIBRATION EXAMPLES
+
+NOISE — FYI informational:
+Subject: "FYI we patched X yesterday, no action required"
+{"is_noise":true,"confidence":"High","primary_reason":"FYI informational, completed action, no problem","matched_patterns":["FYI prefix","no action required"]}
+
+NOT_NOISE — Active outage:
+Subject: "Exchange is down since 10am, 200 users affected"
+{"is_noise":false,"confidence":"High","primary_reason":"Active outage with timestamp and user impact","matched_patterns":["is down","users affected"]}
+
+NOT_NOISE — Splunk alert:
+Subject: "[ALERT] CPU > 95% on prod-app-04" from splunk
+{"is_noise":false,"confidence":"High","primary_reason":"Monitoring alert from Splunk with metric breach","matched_patterns":["[ALERT] tag","splunk sender"]}
+
+NOT_NOISE — Helix incident:
+Subject: "INC0045231 - Exchange degradation assigned"
+Sender: incoming@cuscal-mail.onbmc.com
+{"is_noise":false,"confidence":"High","primary_reason":"BMC Helix incident assigned to L2 team","matched_patterns":["INC number","helix sender"]}
+
+NOISE — Helix work order:
+Subject: "Work Order WO34701: Status has been updated to Pending."
+Sender: incoming@cuscal-mail.onbmc.com
+{"is_noise":true,"confidence":"High","primary_reason":"Work order status update, no L2 action needed","matched_patterns":["Work Order subject","status update"]}
+
+NOISE — Helix PBI:
+Subject: "PBI9207: Implement date rollover fix"
+Sender: incoming@cuscal-mail.onbmc.com
+{"is_noise":true,"confidence":"High","primary_reason":"PBI creation notification, no L2 action needed","matched_patterns":["PBI prefix","helix sender"]}
+
+NOISE — Scheduled maintenance:
+Subject: "Technology Services Notification: Scheduled Microsoft Windows"
+Body: "The Hosting team will be conducting Microsoft Windows patching..."
+{"is_noise":true,"confidence":"High","primary_reason":"Scheduled maintenance announcement, future-dated, no current issue","matched_patterns":["scheduled maintenance","future-dated"]}
+
+NOISE — Follow-up no new info:
+Subject: "Re: yesterday's issue, just checking"
+{"is_noise":true,"confidence":"Medium","primary_reason":"Follow-up with no new information","matched_patterns":["just checking","Re: prefix"]}
+
+# YOUR ORG EXAMPLES
+[Add your specific emails here as you find new edge cases]
