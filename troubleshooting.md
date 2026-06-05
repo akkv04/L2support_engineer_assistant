@@ -205,3 +205,104 @@ replace(replace(body('Execute_Triage_Agent')?['responses'][0], '```json', ''), '
 Flow run failed. Action 'Compose_Noise_Triage' failed: Unable to process template language expressions in action 'Compose_Noise_Triage' inputs at line '0' and column '0': 'The value cannot be an empty string. (Parameter 'oldValue')'.
 
 replace(replace(body('Execute_Triage_Agent')?['responses'][0], concat(uriComponentToString('%60%60%60'), 'json'), ''), uriComponentToString('%60%60%60'), '')
+
+
+    "body": {
+        "responses": [],
+        "conversationId": "a22c79e0-ef89-45b0-b3c6-46f47fd883a3",
+        "activities": [
+            {
+                "type": "endOfConversation",
+                "id": "037266d2-b84a-47cc-8f6a-c9ca4a02e586",
+                "timestamp": "2026-06-05T00:26:41.1008619+00:00",
+                "channelId": "pva-autonomous",
+                "from": {
+                    "id": "Default-07a51c53-26db-43c3-9ca1-5fc63ffa4bb0/8644bc7a-0360-f111-a825-7c1e522ad9c3",
+                    "name": "L2 Noise Detector",
+                    "role": "bot"
+                },
+                "conversation": {
+                    "id": "a22c79e0-ef89-45b0-b3c6-46f47fd883a3"
+                },
+                "recipient": {
+                    "id": "2d38431a-a2d0-428d-871d-1e425c2584ea",
+                    "aadObjectId": "2d38431a-a2d0-428d-871d-1e425c2584ea",
+                    "role": "user"
+                },
+                "membersAdded": [],
+                "membersRemoved": [],
+                "reactionsAdded": [],
+                "reactionsRemoved": [],
+                "attachments": [],
+                "entities": [],
+                "replyToId": "06fff648-b84d-465f-8713-016310a17445",
+                "listenFor": [],
+                "textHighlights": []
+            },
+            {
+                "type": "event",
+                "id": "d001870e-2d64-422f-85e3-ef02cb41ecd7",
+                "timestamp": "2026-06-05T00:26:52.1362862+00:00",
+                "channelId": "pva-autonomous",
+                "from": {
+                    "id": "Default-07a51c53-26db-43c3-9ca1-5fc63ffa4bb0/8644bc7a-0360-f111-a825-7c1e522ad9c3",
+                    "name": "L2 Noise Detector",
+                    "role": "bot"
+                },
+                "conversation": {
+                    "id": "a22c79e0-ef89-45b0-b3c6-46f47fd883a3"
+                },
+                "recipient": {
+                    "id": "2d38431a-a2d0-428d-871d-1e425c2584ea",
+                    "aadObjectId": "2d38431a-a2d0-428d-871d-1e425c2584ea",
+                    "role": "user"
+                },
+                "membersAdded": [],
+                "membersRemoved": [],
+                "reactionsAdded": [],
+                "reactionsRemoved": [],
+                "attachments": [],
+                "entities": [],
+                "replyToId": "06fff648-b84d-465f-8713-016310a17445",
+                "valueType": "DynamicPlanFinished",
+                "value": {
+                    "planId": "bfc004b3-3972-4dce-ba09-3fe881de62d9",
+                    "wasCancelled": false
+                },
+                "name": "DynamicPlanFinished",
+                "listenFor": [],
+                "textHighlights": []
+            },
+            {
+                "type": "endOfConversation",
+                "id": "add254a8-d0f8-4337-93ae-0a7bc859f7f3",
+                "timestamp": "2026-06-05T00:26:52.1366138+00:00",
+                "channelId": "pva-autonomous",
+                "from": {
+                    "id": "Default-07a51c53-26db-43c3-9ca1-5fc63ffa4bb0/8644bc7a-0360-f111-a825-7c1e522ad9c3",
+                    "name": "L2 Noise Detector",
+                    "role": "bot"
+                },
+                "conversation": {
+                    "id": "a22c79e0-ef89-45b0-b3c6-46f47fd883a3"
+                },
+                "recipient": {
+                    "id": "2d38431a-a2d0-428d-871d-1e425c2584ea",
+                    "aadObjectId": "2d38431a-a2d0-428d-871d-1e425c2584ea",
+                    "role": "user"
+                },
+                "membersAdded": [],
+                "membersRemoved": [],
+                "reactionsAdded": [],
+                "reactionsRemoved": [],
+                "attachments": [],
+                "entities": [],
+                "replyToId": "06fff648-b84d-465f-8713-016310a17445",
+                "listenFor": [],
+                "textHighlights": []
+            }
+        ],
+        "lastResponse": "",
+        "isPlanFinished": true,
+        "isExpectingInput": false
+    }
