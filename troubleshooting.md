@@ -306,3 +306,6 @@ replace(replace(body('Execute_Triage_Agent')?['responses'][0], concat(uriCompone
         "isPlanFinished": true,
         "isExpectingInput": false
     }
+
+
+<img width="1182" height="620" alt="image" src="https://github.com/user-attachments/assets/53fd7464-0567-44db-bcbf-36199f6fadb7" />
