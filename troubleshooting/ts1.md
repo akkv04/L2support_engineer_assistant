@@ -13,3 +13,5 @@ if(
     concat(uriComponentToString('%60%60%60'),'json'),''),
     uriComponentToString('%60%60%60'),'')
 )
+
+concat('Step ', item()?['step_number'], ': ', item()?['action'], ' (Source: ', item()?['source_title'], ')')
