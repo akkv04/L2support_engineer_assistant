@@ -19,5 +19,7 @@ concat('Step ', item()?['step_number'], ': ', item()?['action'], ' (Source: ', i
 
 Flow run failed. Action 'Compose_Noise_Triage' failed: Unable to process template language expressions in action 'Compose_Noise_Triage' inputs at line '0' and column '0': 'The template language expression 'replace(replace(body('Execute_Noise_Detector_Agent')?['responses'][0], concat(uriComponentToString('%60%60%60'), 'json'), ''), uriComponentToString('%60%60%60'), '')' cannot be evaluated because array index '0' cannot be selected from empty array. Please see https://aka.ms/logicexpressions for usage details.'.
 
+length(body('Execute_Noise_Detector_Agent')?['responses'])
+
 
 
