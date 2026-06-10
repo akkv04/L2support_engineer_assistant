@@ -25,3 +25,7 @@ length(body('Execute_Noise_Detector_Agent')?['responses'])
 {"is_noise":false,"confidence":"Low","primary_reason":"agent failed after 3 attempts - passing to RCA for safety","matched_patterns":["max retry fallback"]}
 
 Flow run failed. Action 'Get_emails_(V3)' failed: There is an unterminated string literal at position 117 in '"INC 31481 - Visa Dispute Pre-Arbitration lodging - 1912606 Male -SDSE C148730 CRM:03850847012 TSN / ROL'. clientRequestId: ff5e7fd6-3d3a-4e7d-952e-a85d417bb3e4 serviceRequestId: a985e3d2-9625-4196-9dfd-c8e2eab6028c
+
+
+
+concat('subject:"', replace(substring(triggerOutputs()?['body/subject'], 0, min(50, length(triggerOutputs()?['body/subject']))), '"', ''), '"')
