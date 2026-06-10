@@ -22,4 +22,4 @@ Flow run failed. Action 'Compose_Noise_Triage' failed: Unable to process templat
 length(body('Execute_Noise_Detector_Agent')?['responses'])
 
 
-
+{"is_noise":false,"confidence":"Low","primary_reason":"agent failed after 3 attempts - passing to RCA for safety","matched_patterns":["max retry fallback"]}
