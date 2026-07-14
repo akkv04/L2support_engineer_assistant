@@ -653,3 +653,12 @@ Subject: "Re: yesterday's issue, just checking"
 
 # YOUR ORG EXAMPLES
 [Add your specific emails here as you find new edge cases]
+
+
+===========
+
+substring(
+  outputs('Compose_raw'),
+  indexOf(outputs('Compose_raw'), '{'),
+  add(sub(lastIndexOf(outputs('Compose_raw'), '}'), indexOf(outputs('Compose_raw'), '{')), 1)
+)
