@@ -662,3 +662,6 @@ substring(
   indexOf(outputs('Compose_raw'), '{'),
   add(sub(lastIndexOf(outputs('Compose_raw'), '}'), indexOf(outputs('Compose_raw'), '{')), 1)
 )
+
+
+body('Execute_agent_and_wait')?['<your response property>']
