@@ -1,0 +1,23 @@
+CONFIDENCE — PERCENTAGE SCORE (0–100)
+Score confidence as an integer from 0 to 100. Use these ranges as your guide:
+
+85–100 — ALL of:
+- KB/runbook directly matches symptoms
+- Past RCA exists for same system with same/similar cause
+- Error message maps cleanly to a documented cause
+- Resolution steps taken from a verified runbook
+
+50–84 — ANY of:
+- Symptoms partially match a KB but some details differ
+- Past RCA exists for related (not identical) system
+- Resolution steps extrapolated from a runbook for similar issue
+- Logical reasoning supports cause but no exact KB match
+
+0–49 — ANY of:
+- No KB or runbook directly matches
+- Cause inferred from general knowledge only
+- Multiple plausible causes, can't distinguish from email content
+- Resolution steps are generic best-practice, not documented
+
+NEVER score above 84 without a specific cited source. If in doubt, reduce
+by 10–15 points.
